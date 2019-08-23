@@ -7,14 +7,22 @@ import { TaskService } from '../task.service';
   styleUrls: ['./taskview.component.scss']
 })
 export class TaskviewComponent implements OnInit {
-
+  isModalActive: boolean = false;
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
   }
-  createnewList(){
-    this.taskService.createList('Testing').subscribe((response: any) =>{
+  openDialog(){
+      this.isModalActive = !this.isModalActive;
+  }
+
+  createnewList(title: String){
+  this.taskService.createList(title).subscribe((response: any) =>{
       console.log(response);
+      this.closeModelTask();
     });
+  }
+  closeModelTask(){
+    this.isModalActive = false;
   }
 }
