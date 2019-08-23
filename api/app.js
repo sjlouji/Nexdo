@@ -6,6 +6,11 @@ const List = require('./db/models/list_model');
 const Task = require('./db/models/task_model');
 
 app.use(bodyparser.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 app.get('/list',function(req,res){
     List.find({}).then((lists)=>{
