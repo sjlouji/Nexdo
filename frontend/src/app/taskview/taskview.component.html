@@ -6,69 +6,66 @@
                 Lists
             </h1>
             <div class="list-menu">
-                    <a class="list-menu-item is-active">
-                        <p>list 1</p>
-                    </a>
-                    <a class="list-menu-item">
-                        <p>list 1</p>
-                    </a>
-                    <a class="list-menu-item">
-                        <p>list 1</p>
-                    </a>
-                    <a class="list-menu-item">
-                        <p>list 1</p>
-                    </a>
-                    <a class="list-menu-item">
-                            <p>list 1</p>
-                    </a>
-                    <a class="list-menu-item">
-                            <p>list 1</p>
+                    <a class="list-menu-item " *ngFor="let list of lists" [routerLink]="['',list._id]" routerLinkActive="is-active">
+                        <p>{{ list.title }}</p>
                     </a>
             </div>
+                    <button class="button is-info  has-text-white" type="button" (click)="openDialog()"><i class="fa fa-plus"></i>Add a Task</button>
         </div>
+
         <div class="task-list-container has-background-light">
             <h1 class="title" style="color: steelblue">
                 Tasks
             </h1>
-            <div class="tasks">
-                <p>Hey there this is Joan Louji</p>
-            </div>
-            <div class="tasks">
-                    <p>Hey there this is Joan Louji</p>
-            </div>
-            <div class="tasks">
-                    <p>Hey there this is Joan Louji</p>
-            </div>
-            <div class="tasks">
-                    <p>Hey there this is Joan Louji</p>
-            </div>
-            <div class="tasks">
-                    <p>Hey there this is Joan Louji</p>
+            <div class="tasks" *ngFor="let task of tasks">
+                <p>{{ task.title }}</p>
             </div>
         </div>
+        <!--Start of the add list-->
         <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
             <div class="modal-background"></div>
             <div class="modal-card">
               <header class="modal-card-head">
-                <p class="modal-card-title">Add a Task</p>
+                <p class="modal-card-title">Add a List</p>
                 <button class="delete" (click)="closeModelTask()" aria-label="close"></button>
               </header>
               <section class="modal-card-body">
                 <div class="field">
                     <div class="control">
-                      <input #listInput class="input is-medium" type="text" placeholder="Add a Task">
+                      <input #listInput class="input is-medium" type="text" placeholder="Add a List">
                     </div>
                   </div>
               </section>
               <footer class="modal-card-foot">
-                <button class="button is-primary" (click)="createnewList(listInput.value)">Add a Task</button>
+                <button class="button is-primary" (click)="createnewList(listInput.value)" >Add a List</button>
                 <button class="button is-danger" (click)="closeModelTask()">Cancel</button>
               </footer>
             </div>
           </div>
+          <!--Start of add task-->
+          <div class="modal" [ngClass]="{ 'is-active' : isModalActiveTask }">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Add a Task</p>
+                    <button class="delete" (click)="closeModelTask()" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="field">
+                        <div class="control">
+                          <input #listInputTask class="input is-medium" type="text" placeholder="Add a Task">
+                        </div>
+                      </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button class="button is-primary" (click)="createnewListTask(listInputTask.value)" >Add a Task</button>
+                    <button class="button is-danger" (click)="closeModelTask()">Cancel</button>
+                  </footer>
+                </div>
+              </div>
     </div>
 </div>
 <div class="bottom-right-corner has-background-light">
-        <button class="button is-info is-rounded has-text-white" type="button" (click)="openDialog()" style="border-radius: 100%; height: 70px;width: 70px"><i class="fa fa-plus"></i></button>
+        <button class="button is-info is-rounded has-text-white class_one" type="button" (click)="openTaskDialog()" style="border-radius: 100%; height: 70px;width: 70px"><i class="fa fa-plus"></i></button>
 </div>
 <footer>Deisgned by <a href="www.loujibrotherstest.me">Joan Louji</a></footer>

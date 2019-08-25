@@ -69,10 +69,12 @@
     }
 }
 
-.button{
+.button_one{
     justify-content: last baseline;
 }
-
+.button_two{
+    justify-content: last end;
+}
 .tasks{
     background: white;
     padding: 15px 20px;
@@ -97,6 +99,13 @@
 .bottom-right-corner{
     display: flex;
     position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-bottom:80px;
+    padding-right: 60px; 
+}
+.bottom-right-right{
+    display: flex;
     right: 0;
     bottom: 0;
     padding-bottom:80px;
